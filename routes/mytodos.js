@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router()
-const mysql = require('mysql');
+const mysql = require('mysql'); 
 const { db } = require('../connection.js')
-
+console.log('My DB_HOST at mytodos Env:',process.env.DB_HOST);
 // a test to check node mysql statements
 // uses mysql.format to parse the statement
 // req.body: {statement:<statement>}
@@ -12,7 +12,7 @@ router.post('/sqltest',(req,res)=>{
   let inserts = req.body.inserts;
   console.log('sqltest req.body=',stmt,inserts);
   let sql = mysql.format(stmt, [inserts]);
-  return new Promise ((resolve,reject)=>{
+  return new Promise ((resolve,reject)=>{  
     resolve(res.send(sql))
   })//promise
 })// router.get 

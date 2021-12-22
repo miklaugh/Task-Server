@@ -3,16 +3,14 @@
 //DBserver
 const express = require('express')
 const cors = require('cors')
-const app = express()
-const port = 5000
+const app = express() 
 
+require('dotenv').config();
+const port = parseInt(process.env.DB_PORT) || 5000; 
 // mytodos route
 
 const mytodosRoutes = require ('./routes/mytodos')
-/*
-const pupilRoutes = require('./routes/pupils')
-const memberRoutes = require('./routes/members')
-*/
+
 //cross-origin-resource-sharing
 app.use(cors())
 // automatic parsing of json
@@ -28,6 +26,6 @@ app.use('/api/pupils/', pupilRoutes);
 app.use('/api/members/', memberRoutes);
 */
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-})
+  console.log(`Example app listening at http://localhost:${port}`);  
+})  
 
